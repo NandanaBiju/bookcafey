@@ -17,7 +17,7 @@ app.set("view engine","ejs");
 app.set("views","./views/users")
 
 
-mongoose.connect("mongodb://localhost:27017/bookcafe");
+mongoose.connect("mongodb+srv://nandanabiju00:00000000@cluster0.9oewiel.mongodb.net/bookcafe?retryWrites=true&w=majority&appName=Cluster0");
 
 mongoose.connection.on("connected",()=>{
     console.log("DataBase Connected Successfully");
