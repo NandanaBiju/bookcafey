@@ -48,13 +48,6 @@ app.use(session({
 }));
 app.use(flash());
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// app.get("/",(req,res)=>{
-//   res.send("hello world!")
-// })
-
 
 //user route
 const userRoute=require("./routes/userRoute");
