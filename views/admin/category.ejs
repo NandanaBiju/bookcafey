@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-products-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:00 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <title>BOOKCAFE</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/adminassets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/adminassets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="/admin/home" class="brand-wrap">
+                <img src="/adminassets/imgs/theme/logo.png" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/products"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Category</span>
+                    </a>                   
+                </li>
+
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/coupon"> <i class="icon material-icons md-class"></i>
+                        <span class="text">Coupon</span> 
+                    </a>
+                </li>
+                <!-- <li class="menu-item has-submenu ">
+                    <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-orders-1.html">Order list 1</a>
+                        <a href="page-orders-2.html">Order list 2</a>
+                        <a href="page-orders-detail.html">Order detail</a>
+                    </div>
+                </li> -->
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-store"></i>
+                        <span class="text">Users</span>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/sales"> <i class="icon material-icons md-store"></i>
+                        <span class="text">Sales Report</span>
+                    </a>
+                </li>
+               
+                <!-- <li class="menu-item has-submenu">
+                    <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                        <span class="text">Transactions</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-transactions-1.html">Transaction 1</a>
+                        <a href="page-transactions-2.html">Transaction 2</a>
+                    </div>
+                </li> -->
+                <!-- <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
+                        <span class="text">Account</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-account-login.html">User login</a>
+                        <a href="page-account-register.html">User registration</a>
+                        <a href="page-error-404.html">Error 404</a>
+                    </div>
+                </li> -->
+                <!-- <li class="menu-item">
+                    <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Reviews</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                        <span class="text">Statistics</span>
+                    </a>
+                </li> -->
+            </ul>
+            <hr>
+            <!-- <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li>
+            </ul> -->
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-search">
+                <form class="searchform">
+                    <div class="input-group">
+                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                        <button class="btn btn-light bg" type="button"> <i
+                                class="material-icons md-search"></i></button>
+                    </div>
+                    <!-- <datalist id="search_terms">
+                        <option value="Products">
+                        <option value="New orders">
+                        <option value="Apple iphone">
+                        <option value="Ahmed Hassan">
+                    </datalist> -->
+                </form>
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                        class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon" href="#">
+                            <i class="material-icons md-notifications animation-shake"></i>
+                            <span class="badge rounded-pill">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="requestfullscreen nav-link btn-icon"><i
+                                class="material-icons md-cast"></i></a>
+                    </li>
+                    <!-- <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage"
+                            aria-expanded="false"><i class="material-icons md-public"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                            <a class="dropdown-item text-brand" href="#"><img src="/adminassets/imgs/theme/flag-us.png"
+                                    alt="English">English</a>
+                            <a class="dropdown-item" href="#"><img src="/adminassets/imgs/theme/flag-fr.png"
+                                    alt="Français">Français</a>
+                            <a class="dropdown-item" href="#"><img src="/adminassets/imgs/theme/flag-jp.png"
+                                    alt="Français">日本語</a>
+                            <a class="dropdown-item" href="#"><img src="/adminassets/imgs/theme/flag-cn.png"
+                                    alt="Français">中国人</a>
+                        </div>
+                    </li> -->
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                            aria-expanded="false"> <img class="img-xs rounded-circle"
+                                src="/adminassets/imgs/people/avatar2.jpg" alt="User"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            <!-- <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit
+                                Profile</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account
+                                Settings</a>
+                            <a class="dropdown-item" href="#"><i
+                                    class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a> -->
+                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help
+                                center</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="adminLogin"><i
+                                    class="material-icons md-exit_to_app"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Categories</h2>
+                    <p><p>Add, edit or delete a category</p></p>
+                </div>
+                <!-- <div>
+                    <input type="text" placeholder="Search Categories" class="form-control bg-white">
+                </div> -->
+            </div>
+
+            <!-- Category creation form -->
+            <!-- <form action="/admin/category" method="post">
+                <div class="mb-4">
+                    <label for="category_name" class="form-label">Category Name</label>
+                    <input type="text" placeholder="Type here" class="form-control" name="name" required />
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Description</label>
+                    <textarea placeholder="Type here" class="form-control" name="description" required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Create category</button>
+                </div>
+            </form>
+         -->
+                <form action="/admin/category" method="post" id="categoryForm">
+                    <div class="mb-4">
+                        <label for="categoryName" class="form-label">Category Name</label>
+                        <input type="text" placeholder="Type here" class="form-control" name="name" id="categoryName"
+                            required />
+                        <div id="categoryNameErr" class="text-danger"></div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Description</label>
+                        <textarea placeholder="Type here" class="form-control" name="description" id="description"
+                            required></textarea>
+                        <div id="descriptionErr" class="text-danger"></div>
+                    </div>
+                    <% if (messages && messages.length > 0) { %>
+                        <% messages.forEach(message => { %>
+                          <div class="alert alert-danger" role="alert">
+                            <%= message %>
+                          </div>
+                        <% }); %>
+                      <% } %>
+                      
+                      
+                      <% if (successMessages && successMessages.length > 0) { %>
+                        <% successMessages.forEach(message => { %>
+                          <div class="alert alert-success" role="alert">
+                            <%= message %>
+                          </div>
+                        <% }); %>
+                      <% } %>
+                      
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Create category</button>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+            <br>
+            <!-- Pagination -->
+
+
+<!-- Category list -->
+<div class="card mb-4">
+    <header class="card-header">
+        <!-- Header content -->
+    </header>
+    <% categories.forEach(category=> { %>
+        <!-- Category items -->
+    <% }) %>
+</div>
+
+
+            <!-- Category list -->
+            <div class="card mb-4">
+                <header class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">Category Name</div>
+                        <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">Description</div>
+                        <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">offers</div>
+                        <div class="col-lg-2 col-sm-2 col-4 col-status">Status</div>
+                        <div class="col-lg-2 col-sm-2 col-4 col-action text-end">Action</div>
+                    </div>
+                </header> <!-- card-header end// -->
+                <% categories.forEach(category=> { %>
+                    <article class="itemlist">
+                        <div class="row align-items-center user-item">
+                            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+                                <%= category.name %>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+                                <%= category.description %>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+                                <% if (category.categoryOffer !== 0) { %>
+                                    <%= category.categoryOffer %>% <!-- Display percentage if offer exists -->
+                                <% } else { %>
+                                    0% <!-- Display 0% if no offer exists -->
+                                <% } %>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+                                <% if (category.categoryOffer === 0) { %>
+                                    <button class="btn btn-info" onclick="addOffer('<%= category._id %>')" style="width: 100px;">
+                                        <a href="#" class="text-white">Add Offer</a>
+                                    </button>
+                                <% } else { %>
+                                    <button class="btn btn-info" onclick="removeOffer('<%= category._id %>')" style="width: 100px;">
+                                        <a href="#" class="text-white">Remove</a>
+                                    </button>
+                                <% } %>
+                            </div>
+
+
+                            <div class="col-lg-2 col-sm-2 col-4 col-status">
+                                <% if (category.is_blocked===false) { %>
+                                    <span class="badge rounded-pill alert-success">List</span>
+                                    <% } else { %>
+                                        <span class="badge rounded-pill alert-danger">Unlist</span>
+                                        <% } %>
+                            </div>
+                            <!-- <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
+                                <a href="/admin/category/edit/<%= category._id %>"
+                                    class="btn btn-sm font-sm rounded btn-brand m-2">
+                                    <i class="material-icons md-edit"></i> Edit
+                                </a>
+                                <a href="/admin/category/delete?id=<%= category._id %>"
+                                    class="btn btn-sm font-sm btn-light rounded delete-btn"
+                                    id="delete-btn-<%= category._id %>"
+                                    data-category-id="<%= category._id %>">
+                                    <i class="material-icons md-delete_forever"></i> Delete
+                                </a>
+                            </div> -->
+
+                            <!-- <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
+                                <a href="/admin/category/edit/<%= category._id %>"
+                                    class="btn btn-sm font-sm rounded btn-brand m-2">
+                                    <i class="material-icons md-edit"></i> Edit
+                                </a> -->
+                                <!-- <a href="/admin/category/delete?id=<%= category._id %>"
+                                    class="btn btn-sm font-sm btn-light rounded delete-btn"
+                                    id="delete-btn-<%= category._id %>" data-category-id="<%= category._id %>">
+                                    <i class="material-icons md-delete_forever"></i> Delete
+                                </a> -->/
+                                <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
+                                    <a href="/admin/category/edit/<%= category._id %>"
+                                        class="btn btn-sm font-sm rounded btn-brand m-2">
+                                        <i class="material-icons md-edit"></i> Edit
+                                    </a>
+                                    <!-- <a href="/admin/category/delete?id=<%= category._id %>"
+                                        class="btn btn-sm font-sm btn-light rounded delete-btn"
+                                        id="delete-btn-<%= category._id %>" data-category-id="<%= category._id %>">
+                                        <i class="material-icons md-delete_forever"></i> Delete
+                                    </a> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </article> <!-- itemlist  .// -->
+                    <% }) %>
+            </div>
+            <div class="pagination-area mt-15 mb-50">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <% if (page> 1) { %>
+                            <li class="page-item"><a class="page-link" href="/admin/category?page=<%= page - 1 %>"><i
+                                        class="fa-solid fa-backward"></i></a></li>
+                            <% } %>
+                                <% for (let i=1; i <=totalPages; i++) { %>
+                                    <li class="page-item <%= page === i ? 'active' : '' %>"><a class="page-link"
+                                            href="/admin/category?page=<%= i %>">
+                                            <%= i %>
+                                        </a></li>
+                                    <% } %>
+                                        <% if (page < totalPages) { %>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="/admin/category?page=<%= page + 1 %>"><i
+                                                        class="fa-solid fa-forward"></i></a></li>
+                                            <% } %>
+                    </ul>
+                </nav>
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> ©,
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        // Automatically remove flash messages after 5 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(alert => {
+                alert.remove();
+            });
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+    <script>
+
+document.getElementById("categoryName").addEventListener("blur", function (event) {
+        validateName();
+    });
+
+    document.getElementById("description").addEventListener("blur", function (event) {
+        validateDescription();
+    });
+
+    document.getElementById("categoryForm").addEventListener("submit", function (event) {
+        if (!isValidForm()) {
+            event.preventDefault();
+        }
+    });
+
+    function validateName() {
+        var name = document.getElementById("categoryName").value.trim();
+        if (!name || !name.trim()) {
+            showError("categoryNameErr", "Category name cannot be empty or contain only spaces.");
+        } else {
+            hideError("categoryNameErr");
+        }
+    }
+
+    function validateDescription() {
+        var description = document.getElementById("description").value.trim();
+        if (description === "") {
+            showError("descriptionErr", "Description is required.");
+        } else {
+            hideError("descriptionErr");
+        }
+    }
+
+    function isValidForm() {
+        validateName();
+        validateDescription();
+
+        var errorElements = document.querySelectorAll(".text-danger");
+        for (var i = 0; i < errorElements.length; i++) {
+            if (errorElements[i].textContent !== "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+        document.getElementById("categoryName").addEventListener("blur", function (event) {
+            var categoryName = this.value.trim();
+            if (categoryName !== "") {
+                checkCategoryUniqueness(categoryName);
+            }
+        });
+
+        function checkCategoryUniqueness(categoryName) {
+            // Send an AJAX request to the server to check if the category name is unique
+            // You need to implement this endpoint in your backend
+            fetch(`/admin/category/check?name=${encodeURIComponent(categoryName)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        showError("categoryName", "Category name already exists.");
+                    } else {
+                        hideError("categoryName");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error checking category uniqueness:", error);
+                });
+        }
+
+        // Other validation functions and event listeners for description validation
+
+        // Other validation functions (e.g., for description)
+
+        // Event listener for form submission
+        document.getElementById("categoryForm").addEventListener("submit", function (event) {
+            // Prevent form submission if there are validation errors
+            if (!isValidForm()) {
+                event.preventDefault();
+            }
+        });
+
+        // Function to validate the entire form
+        function isValidForm() {
+            var categoryName = document.getElementById("categoryName").value.trim();
+            var description = document.getElementById("description").value.trim();
+
+            // Perform individual validations for category name and description
+            // Return false if any validation fails, otherwise return true
+
+            return true; // Return true if form is valid
+        }
+
+        // Function to show error message
+        function showError(inputId, message) {
+            var errorElement = document.getElementById(inputId + "-error");
+            if (!errorElement) {
+                errorElement = document.createElement("div");
+                errorElement.id = inputId + "-error";
+                errorElement.className = "text-danger";
+                document.getElementById(inputId).insertAdjacentElement("afterend", errorElement);
+            }
+            errorElement.textContent = message;
+        }
+
+        // Function to hide error message
+        function hideError(inputId) {
+            var errorElement = document.getElementById(inputId + "-error");
+            if (errorElement) {
+                errorElement.textContent = "";
+            }
+        }
+
+
+        async function addOffer(categoryId) {
+        // alert("here")
+        const { value: amount } = await Swal.fire({
+            title: 'Offer in percentage',
+            input: 'number',
+            inputLabel: 'Percentage',
+            inputPlaceholder: '%',
+            didOpen: () => {
+            document.querySelector('#swal2-input').focus(); // Set focus on input field
+        }
+        })
+        $.ajax({
+            url: "/admin/addCategoryOffer",
+            method: "post",
+            data: {
+                percentage: amount,
+                categoryId: categoryId
+            },
+            success: (response) => {
+                console.log(response);
+                if (response.status === true) {
+                    location.reload()
+                    // Swal.fire('Offer added', 'The offer has been removed.', 'success');
+
+                } else {
+                    // alert("failed")
+                }
+            }
+        })
+    }
+
+    function removeOffer(categoryId) {
+    try {
+        Swal.fire({
+            title: 'Remove Offer',
+            text: 'Are you sure you want to remove this offer?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, remove it!',
+            timer: 5000,  // 5 seconds
+            timerProgressBar: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/admin/removeCategoryOffer",
+                    method: "post",
+                    data: {
+                        categoryId: categoryId
+                    },
+                    success: (response) => {
+                        console.log(response);
+                        if (response.status === true) {
+                            // Reload the page after successful removal
+                            location.reload();
+                        } else {
+                            Swal.fire('Error', 'Failed to remove the offer.', 'error');
+                        }
+                    }
+                });
+            }
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+    </script>
+
+
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:21 GMT -->
+
+</html>
