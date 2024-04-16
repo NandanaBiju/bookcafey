@@ -16,7 +16,7 @@ const auth=require("./middleware/auth");
 app.set("view engine","ejs");
 app.set("views","./views/users")
 
-let mongourl="mongodb+srv://nandanabiju00:W1ISwLuwf6b3A2st@helloapp.okth5nq.mongodb.net/?retryWrites=true&w=majority&appName=helloapp"
+let mongourl="mongodb+srv://nandanabiju00:9tsVMReem8zfoOSN@cluster0.9oewiel.mongodb.net/bookcafe?retryWrites=true&w=majority&appName=Cluster0"
 mongoose.connect(mongourl);
 
 mongoose.connection.on("connected",()=>{
