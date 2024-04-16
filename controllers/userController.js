@@ -1,5 +1,5 @@
 const User=require("../models/userModel");
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 const {use}=require("../routes/userRoute");
 const{sendForgotPasswordOTP}=require("../utils/forgotOtp");
 const{sendInsertOtp}=require("../utils/insertOtp");
