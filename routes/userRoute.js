@@ -133,7 +133,7 @@ user_route.post('/search',productController.searchProducts)
 
 
 user_route.get("/wallet",auth.checkAuth,auth.isBlocked,checkoutController.loadWallet)
-user_route.post("/verifyReferalCode", auth.isBlocked, userController.verifyReferalCode)
+// user_route.post("/verifyReferalCode", auth.isBlocked, userController.verifyReferalCode)
 
 user_route.post("/addCash",auth.checkAuth,auth.isBlocked,checkoutController.addWalletCash)
 

@@ -165,8 +165,8 @@ const loadProducts=async(req,res)=>{
 //registration validation
 const insertUser = async (req, res) => {
     try {
-        const { name, email, mobileno, userpassword, confirmpassword, gender ,  referral} = req.body;
-        console.log(referral,"reefer in insertuser");
+        const { name, email, mobileno, userpassword, confirmpassword, gender } = req.body;
+        console.log("reefer in insertuser");
         const existingUser = await User.findOne({ email: email });
         if (existingUser) {
             return res.redirect('/register?error=Email already exists. Please use a different email.');
@@ -179,28 +179,28 @@ const insertUser = async (req, res) => {
             const otpTimestamp = Date.now();
             console.log(otp,"genearted otp");
 
-            if(referral != ""){
-                console.log("inside referr if");
-                const searchReffer = await User.findOne({referralCode: referral})
-                console.log(searchReffer);
-                if(searchReffer){
-                    console.log("inside reffer");
+            // if(referral != ""){
+            //     console.log("inside referr if");
+            //     const searchReffer = await User.findOne({referralCode: referral})
+            //     console.log(searchReffer);
+            //     if(searchReffer){
+            //         console.log("inside reffer");
                     
-                    req.session.Data = { name, email, mobileno, userpassword, confirmpassword, otp, gender, otpTimestamp,referral };
-                    console.log(req.session.Data);
-                    req.session.save();
-                    // return res.redirect('/verifyOTP');
-                }
+            //         req.session.Data = { name, email, mobileno, userpassword, confirmpassword, otp, gender, otpTimestamp,referral };
+            //         console.log(req.session.Data);
+            //         req.session.save();
+            //         // return res.redirect('/verifyOTP');
+            //     }
                
     
     
-            } else{
+            
                 console.log("inside else in insertuser");
                  req.session.Data = { name, email, mobileno, userpassword, confirmpassword, otp, gender, otpTimestamp };
                  req.session.save();
                  console.log(req.session.Data,"after");
 
-             }
+             
 
 
 
@@ -247,8 +247,8 @@ const getOtp = async (req, res) => {
             // showPopup("OTP is invalid or has expired!");
             return res.status(400).json({ error: "OTP is invalid or has expired!" });
         }
-        const refferal=referralCode(8);
-        const { name, email, mobileno, userpassword,gender,referral } = req.session.Data;
+        // const refferal=referralCode(8);
+        const { name, email, mobileno, userpassword,gender } = req.session.Data;
 
         const passwordHash = await bcrypt.hash(userpassword, 10);
 
@@ -264,69 +264,69 @@ const getOtp = async (req, res) => {
                 is_admin: 0,
                 is_verified: 1,
                 is_blocked: false,
-                referralCode:refferal
+                // referralCode:refferal
             });
             await user.save()
         }
-        if(req.session.Data.referral){
-            console.log(req.session.Data.referral, "inside session reffer");
-            const findUser = await User.findOne({ referralCode: req.session.Data.referral });
-            console.log("user inside refeer to find refeeral", findUser);
+        // if(req.session.Data.referral){
+        //     console.log(req.session.Data.referral, "inside session reffer");
+        //     const findUser = await User.findOne({ referralCode: req.session.Data.referral });
+        //     console.log("user inside refeer to find refeeral", findUser);
             
-            if (findUser) {
-                console.log("inside finduser finded");
-                const userWallet = await Wallet.findOne({ userId: findUser._id });
-                console.log(userWallet,"userwallet");
-                if (userWallet) {
-                    const updateWallet = await Wallet.findOneAndUpdate(
-                        { userId: findUser._id },
-                        {
-                            $inc: { balance: 100 },
-                            $push: {
-                                transactions: {
-                                    id: Tid,
-                                    date: date,
-                                    amount: 100,
-                                    orderType: 'Referral Bonus',
-                                    type: 'Credit'
-                                }
-                            }
-                        }
-                    );
-                } else {
-                    console.log("else in wallet case");
-                    const createWallet = new Wallet({
-                        userId: findUser._id,
-                        balance: 100,
-                        transactions: [{
-                            id: Tid,
-                            date: date,
-                            amount: 100,
-                            orderType: 'Referral Bonus',
-                            type: 'Credit'
-                        }]
-                    });
-                    await createWallet.save();
-                }
+            // if (findUser) {
+            //     console.log("inside finduser finded");
+            //     const userWallet = await Wallet.findOne({ userId: findUser._id });
+            //     console.log(userWallet,"userwallet");
+            //     if (userWallet) {
+            //         const updateWallet = await Wallet.findOneAndUpdate(
+            //             { userId: findUser._id },
+            //             {
+            //                 $inc: { balance: 100 },
+            //                 $push: {
+            //                     transactions: {
+            //                         id: Tid,
+            //                         date: date,
+            //                         amount: 100,
+            //                         // orderType: 'Referral Bonus',
+            //                         type: 'Credit'
+            //                     }
+            //                 }
+            //             }
+            //         );
+            //     } else {
+            //         console.log("else in wallet case");
+            //         const createWallet = new Wallet({
+            //             userId: findUser._id,
+            //             balance: 100,
+            //             transactions: [{
+            //                 id: Tid,
+            //                 date: date,
+            //                 amount: 100,
+            //                 // orderType: 'Referral Bonus',
+            //                 type: 'Credit'
+            //             }]
+            //         });
+            //         await createWallet.save();
+            //     }
 
                 // Create wallet for the new user
-                const newUser = await User.findOne({ email: req.session.Data.email });
-                const newWallet = new Wallet({
-                    userId: newUser._id,
-                    balance: 100,
-                    transactions: [{
-                        id: Tid,
-                        date: date,
-                        amount: 100,
-                        orderType: 'Referral Bonus',
-                        type: 'Credit'
-                    }]
-                });
-                await newWallet.save();
-            }
+                // const newUser = await User.findOne({ email: req.session.Data.email });
+                // const newWallet = new Wallet({
+                //     userId: newUser._id,
+                //     balance: 100,
+                //     transactions: [{
+                //         id: Tid,
+                //         date: date,
+                //         amount: 100,
+                //         // orderType: 'Referral Bonus',
+                //         type: 'Credit'
+                //     }]
+                // });
+            //     await newWallet.save();
+            // }
 
 
-        }
+        
        
 
 
@@ -669,99 +669,99 @@ const deleteAddress=async(req,res)=>{
     }
 }
 
-const verifyReferalCode = async (req, res) => {
-    try {
-        const referalCode = req.body.referalCode
-        if (!req.session.user) {
-            throw new Error("Session user not found");
-        }
-        const currentUser = await User.findOne({ _id: req.session.user })
-        // console.log("currentUser=>>>", currentUser hain);
-        const codeOwner = await User.findOne({ referralCode: referalCode })
-        // console.log("codeOwner=>>>", codeOwner hain);
-        if (!currentUser || !codeOwner) {
-            throw new Error("Current user or code owner not found");
-        }
+// const verifyReferalCode = async (req, res) => {
+//     try {
+//         const referalCode = req.body.referalCode
+//         if (!req.session.user) {
+//             throw new Error("Session user not found");
+//         }
+//         const currentUser = await User.findOne({ _id: req.session.user })
+//         // console.log("currentUser=>>>", currentUser hain);
+//         const codeOwner = await User.findOne({ referralCode: referalCode })
+//         // console.log("codeOwner=>>>", codeOwner hain);
+//         if (!currentUser || !codeOwner) {
+//             throw new Error("Current user or code owner not found");
+//         }
 
-        if (currentUser.redeemed === true) {
-            console.log("You have already redeemed a referral code before!");
-            res.json({ message: "You have already redeemed a referral code before!" })
-            return
-        }
+//         if (currentUser.redeemed === true) {
+//             console.log("You have already redeemed a referral code before!");
+//             res.json({ message: "You have already redeemed a referral code before!" })
+//             return
+//         }
 
-        if (!codeOwner || codeOwner._id.equals(currentUser._id)) {
-            console.log("Invalid referral code!");
-            res.json({ message: "Invalid referral code!" })
-            return
-        }
+//         if (!codeOwner || codeOwner._id.equals(currentUser._id)) {
+//             console.log("Invalid referral code!");
+//             res.json({ message: "Invalid referral code!" })
+//             return
+//         }
 
-        const alreadyRedeemed = codeOwner.redeemedUsers.includes(currentUser._id)
+//         const alreadyRedeemed = codeOwner.redeemedUsers.includes(currentUser._id)
 
-        if (alreadyRedeemed) {
-            console.log("You have already used this referral code!");
-            res.json({ message: "You have already used this referral code!" })
-            return
-        } else {
+//         if (alreadyRedeemed) {
+//             console.log("You have already used this referral code!");
+//             res.json({ message: "You have already used this referral code!" })
+//             return
+//         } else {
 
-            await User.updateOne(
-                { _id: req.session.user },
-                {
-                    $inc: { wallet: 100 },
-                    $push: {
-                        history: {
-                            amount: 100,
-                            status: "credit",
-                            date: Date.now()
-                        }
-                    }
-                }
-            )
-                .then(data => console.log("currentUser Wallet = > ", data))
+//             await User.updateOne(
+//                 { _id: req.session.user },
+//                 {
+//                     $inc: { wallet: 100 },
+//                     $push: {
+//                         history: {
+//                             amount: 100,
+//                             status: "credit",
+//                             date: Date.now()
+//                         }
+//                     }
+//                 }
+//             )
+//                 .then(data => console.log("currentUser Wallet = > ", data))
 
 
 
-            await User.updateOne(
-                { _id: codeOwner._id },
-                {
-                    $inc: { wallet: 200 },
-                    $push: {
-                        history: {
-                            amount: 200,
-                            status: "credit",
-                            date: Date.now()
-                        }
-                    }
-                }
-            )
-                .then(data => console.log("codeOwner Wallet = > ", data))
+//             await User.updateOne(
+//                 { _id: codeOwner._id },
+//                 {
+//                     $inc: { wallet: 200 },
+//                     $push: {
+//                         history: {
+//                             amount: 200,
+//                             status: "credit",
+//                             date: Date.now()
+//                         }
+//                     }
+//                 }
+//             )
+//                 .then(data => console.log("codeOwner Wallet = > ", data))
 
-            await User.updateOne(
-                { _id: codeOwner._id },
-                { $set: { referalCode: referalCode } }
-            )
+//             await User.updateOne(
+//                 { _id: codeOwner._id },
+//                 { $set: { referalCode: referalCode } }
+//             )
 
-            await User.updateOne(
-                { _id: req.session.user },
-                { $set: { redeemed: true } }
-            )
+//             await User.updateOne(
+//                 { _id: req.session.user },
+//                 { $set: { redeemed: true } }
+//             )
 
-            await User.updateOne(
-                { _id: codeOwner._id },
-                { $push: { redeemedUsers: currentUser._id } }
-            )
+//             await User.updateOne(
+//                 { _id: codeOwner._id },
+//                 { $push: { redeemedUsers: currentUser._id } }
+//             )
 
-            console.log("Referral code redeemed successfully!");
+//             console.log("Referral code redeemed successfully!");
 
-            res.json({ message: "Referral code verified successfully!" })
-            return
+//             res.json({ message: "Referral code verified successfully!" })
+//             return
 
-        }
+//         }
 
-    } catch (error) {
-        console.error("Error in verifyReferalCode:", error);
-         res.redirect("/pageNotFound");
-    }
-}
+//     } catch (error) {
+//         console.error("Error in verifyReferalCode:", error);
+//          res.redirect("/pageNotFound");
+//     }
+// }
 
 
 
@@ -802,8 +802,8 @@ module.exports={
     editAddress,
     deleteAddress,
 
-    orders,
-    verifyReferalCode,
+    orders
+    // verifyReferalCode,
    // "hghgh"
 
     

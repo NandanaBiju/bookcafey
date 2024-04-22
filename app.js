@@ -17,6 +17,7 @@ app.set("view engine","ejs");
 app.set("views","./views/users")
 
 let mongourl="mongodb+srv://nandanabiju00:9tsVMReem8zfoOSN@cluster0.9oewiel.mongodb.net/bookcafe?retryWrites=true&w=majority&appName=Cluster0"
+// let mongourl ="mongodb://localhost/:27017"
 mongoose.connect(mongourl);
 
 mongoose.connection.on("connected",()=>{
