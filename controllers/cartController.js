@@ -221,7 +221,7 @@ const removeCart = async (req, res) => {
 
         // Send the updated total in the response
         res.json({ status: true, total: delePro.total });
-        res.redirect('/cart');
+        // res.redirect('/cart');
         // console.log(id)
     } catch (error) {
         console.log(error.message)
