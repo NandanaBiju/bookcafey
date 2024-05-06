@@ -282,7 +282,7 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div>
-                                    <label class="form-label">Images (Up to 4 images)</label>
+                                    <label class="form-label">Images (Up to 5 images)</label>
                                     <input class="form-control" type="file" multiple name="ProductImage"
                                         accept="image/*" onchange="limitFiles(this, 4)" />
                                     <br>
@@ -295,6 +295,7 @@
                                             <input type="checkbox" id="deleteImage<%= i %>" name="deletedImages" value="<%= product.images[i] %>">
                                         </div>
                                         <% } %>
+                                        <button onclick="deleteSelectedImages()">Delete Selected Images</button>
                                         
                                 </div>
                             </div>
@@ -738,8 +739,41 @@
             }
         }
     }
+    document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("submitform");
+    const submitButton = document.getElementById("submitButtonId");
 
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
+        // Delete selected images before form submission
+        deleteSelectedImages();
+
+        if (validateForm()) {
+            form.submit();
+        } else {
+            // Display error message or handle invalid form
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please fill out all required fields correctly.",
+            });
+        }
+    });
+
+    function deleteSelectedImages() {
+        const checkboxes = document.querySelectorAll('input[name="deletedImages"]:checked');
+        checkboxes.forEach(function(checkbox) {
+            // Get the image filename associated with the checkbox
+            const imageName = checkbox.value;
+            // Remove the image element from the DOM
+            checkbox.parentNode.remove();
+            console.log('Deleted image:', imageName);
+        });
+    }
+});
+
+</script>
 
 
 

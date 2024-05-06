@@ -855,6 +855,12 @@ const edit_Category=async(req,res)=>{
             req.flash('error', 'Category description cannot be empty.');
             return res.redirect('/admin/category/edit/' + categoryId);
           }
+          // Check if the new name is the same as the existing name
+        const existingCategory = await Category.findOne({ name: name.trim() });
+        if (existingCategory && existingCategory._id.toString() !== categoryId) {
+            req.flash('error', 'Category name already exists.');
+            return res.redirect('/admin/category/edit/' + categoryId);
+        }
         const updatedCategory=await Category.findByIdAndUpdate(categoryId,{name,description,is_blocked: status === "Unlist" })
         if(!updatedCategory){
             req.flash("error","category not found");
