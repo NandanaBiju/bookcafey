@@ -371,72 +371,71 @@ document.getElementById("categoryName").addEventListener("blur", function (event
 
 
 
-        document.getElementById("categoryName").addEventListener("blur", function (event) {
-            var categoryName = this.value.trim();
-            if (categoryName !== "") {
-                checkCategoryUniqueness(categoryName);
+    document.getElementById("categoryName").addEventListener("blur", function (event) {
+    var categoryName = this.value.trim();
+    if (categoryName !== "") {
+        checkCategoryUniqueness(categoryName);
+    }
+});
+
+function checkCategoryUniqueness(categoryName) {
+    // Send an AJAX request to the server to check if the category name is unique
+    // You need to implement this endpoint in your backend
+    fetch(`/admin/category/check?name=${encodeURIComponent(categoryName)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                showError("categoryName", "Category name already exists.");
+            } else {
+                hideError("categoryName");
             }
+        })
+        .catch(error => {
+            console.error("Error checking category uniqueness:", error);
         });
+}
 
-        function checkCategoryUniqueness(categoryName) {
-            // Send an AJAX request to the server to check if the category name is unique
-            // You need to implement this endpoint in your backend
-            fetch(`/admin/category/check?name=${encodeURIComponent(categoryName)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.exists) {
-                        showError("categoryName", "Category name already exists.");
-                    } else {
-                        hideError("categoryName");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error checking category uniqueness:", error);
-                });
-        }
+// Other validation functions and event listeners for description validation
 
-        // Other validation functions and event listeners for description validation
+// Event listener for form submission
+document.getElementById("categoryForm").addEventListener("submit", function (event) {
+    // Prevent form submission if there are validation errors
+    if (!isValidForm()) {
+        event.preventDefault();
+    }
+});
 
-        // Other validation functions (e.g., for description)
+// Function to validate the entire form
+function isValidForm() {
+    var categoryName = document.getElementById("categoryName").value.trim();
+    var description = document.getElementById("description").value.trim();
 
-        // Event listener for form submission
-        document.getElementById("categoryForm").addEventListener("submit", function (event) {
-            // Prevent form submission if there are validation errors
-            if (!isValidForm()) {
-                event.preventDefault();
-            }
-        });
+    // Perform individual validations for category name and description
+    // Return false if any validation fails, otherwise return true
 
-        // Function to validate the entire form
-        function isValidForm() {
-            var categoryName = document.getElementById("categoryName").value.trim();
-            var description = document.getElementById("description").value.trim();
+    return true; // Return true if form is valid
+}
 
-            // Perform individual validations for category name and description
-            // Return false if any validation fails, otherwise return true
+// Function to show error message
+function showError(inputId, message) {
+    var errorElement = document.getElementById(inputId + "-error");
+    if (!errorElement) {
+        errorElement = document.createElement("div");
+        errorElement.id = inputId + "-error";
+        errorElement.className = "text-danger";
+        document.getElementById(inputId).insertAdjacentElement("afterend", errorElement);
+    }
+    errorElement.textContent = message;
+}
 
-            return true; // Return true if form is valid
-        }
+// Function to hide error message
+function hideError(inputId) {
+    var errorElement = document.getElementById(inputId + "-error");
+    if (errorElement) {
+        errorElement.textContent = "";
+    }
+}
 
-        // Function to show error message
-        function showError(inputId, message) {
-            var errorElement = document.getElementById(inputId + "-error");
-            if (!errorElement) {
-                errorElement = document.createElement("div");
-                errorElement.id = inputId + "-error";
-                errorElement.className = "text-danger";
-                document.getElementById(inputId).insertAdjacentElement("afterend", errorElement);
-            }
-            errorElement.textContent = message;
-        }
-
-        // Function to hide error message
-        function hideError(inputId) {
-            var errorElement = document.getElementById(inputId + "-error");
-            if (errorElement) {
-                errorElement.textContent = "";
-            }
-        }
     </script>
 
 </body>
