@@ -286,17 +286,18 @@
                                     <input class="form-control" type="file" multiple name="ProductImage"
                                         accept="image/*" onchange="limitFiles(this, 4)" />
                                     <br>
-                                    <% for (let i=0; i < Math.min(product.images.length, 4); i++) { %>
-                                        <!-- Display existing images -->
-                                        <div>
-                                        <img src="/productAssets/<%= product.images[i] %>" alt="Product Image"
-                                            style="max-height: 250px; max-width: 195px;">
-                                            <label for="deleteImage<%= i %>">Delete</label>
-                                            <input type="checkbox" id="deleteImage<%= i %>" name="deletedImages" value="<%= product.images[i] %>">
-                                        </div>
-                                        <% } %>
-                                        <button onclick="deleteSelectedImages()">Delete Selected Images</button>
-                                        
+                                   <!-- HTML -->
+                                   <% for (let i = 0; i < Math.min(product.images.length, 4); i++) { %>
+                                    <div class="image-container">
+                                        <img src="/productAssets/<%= product.images[i] %>" alt="Product Image" style="max-height: 250px; max-width: 195px;">
+                                        <input type="checkbox" class="delete-image-checkbox" data-index="<%= i %>" name="deletedImages" value="<%= product.images[i] %>">
+                                        <label>Delete</label>
+                                        <input type="file" style="display: none;">
+                                    </div>
+                                <% } %>
+                                
+                                    
+                                       
                                 </div>
                             </div>
                         </div>
@@ -761,22 +762,132 @@
         }
     });
 
+    // Function to delete selected images
     function deleteSelectedImages() {
         const checkboxes = document.querySelectorAll('input[name="deletedImages"]:checked');
         checkboxes.forEach(function(checkbox) {
             // Get the image filename associated with the checkbox
             const imageName = checkbox.value;
+            // Find the parent container of the checkbox
+            const image = document.querySelector(`img[src*="${imageName}"]`);
+        if (image) {
             // Remove the image element from the DOM
-            checkbox.parentNode.remove();
+            image.parentNode.remove();
             console.log('Deleted image:', imageName);
+        } else {
+            console.log('Image not found for the checkbox:', imageName);
+        }
         });
     }
 });
 
+
+    function replace(event, index, productID) {
+        event.preventDefault();
+        const fileInput = event.target.nextElementSibling;
+        const imageContainer = event.target.closest('.image-container');
+        fileInput.onchange = function () {
+            const file = this.files[0];
+            if (file) {
+                const img = imageContainer.querySelector('img');
+                img.src = URL.createObjectURL(file);
+                const imageName = file.name;
+
+                if (imageName && index && productID) {
+                    $.ajax({
+                        url: "/admin/products/editproductImagePOST",
+                        method: "post",
+                        data: {
+                            imagename,
+                            index,
+                            productID
+                        },
+                        success: (response) => {
+                            if (response.status === "okay") {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Image successfully saved",
+                                    showConfirmButton: false,
+                                    customClass: {
+                                        popup: 'swal-custom',
+                                    },
+                                    timer: 1500
+                                });
+                            } else if (response.status === "oops") {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops!.. Network is busy please refresh",
+                                    showConfirmButton: false,
+                                    customClass: {
+                                        popup: 'swal-custom',
+                                    },
+                                    timer: 1500
+                                });
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+    const deleteCheckboxes = document.querySelectorAll('.delete-image-checkbox');
+
+    deleteCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function(event) {
+            if (checkbox.checked) {
+                const checkedCheckboxes = document.querySelectorAll('.delete-image-checkbox:checked');
+                if (checkedCheckboxes.length > 1) {
+                    // Multiple checkboxes are checked, handle deletion of multiple images
+                    handleMultipleDeletions(checkedCheckboxes);
+                } else {
+                    // Only one checkbox is checked, handle deletion of a single image
+                    const index = checkbox.dataset.index;
+                    const imageName = product.images[index];
+                    deleteImage(imageName, checkbox);
+                }
+            }
+        });
+    });
+
+    function handleMultipleDeletions(checkboxes) {
+        const imageNames = [];
+        checkboxes.forEach(function(checkbox) {
+            const index = checkbox.dataset.index;
+            const imageName = product.images[index];
+            imageNames.push(imageName);
+        });
+        // Perform deletion of multiple images
+        deleteMultipleImages(imageNames);
+    }
+
+    function deleteImage(imageName, checkbox) {
+        // Perform deletion of single image
+        console.log("Deleting image:", imageName);
+        // Add your AJAX request or other deletion logic here
+
+        // Remove the image container from the DOM
+        const imageContainer = checkbox.closest('.image-container');
+        imageContainer.remove();
+    }
+
+    function deleteMultipleImages(imageNames) {
+        // Perform deletion of multiple images
+        console.log("Deleting multiple images:", imageNames);
+        // Add your AJAX request or other deletion logic here
+
+        // Remove the image containers from the DOM
+        const imageContainers = document.querySelectorAll('.image-container');
+        imageContainers.forEach(function(container) {
+            container.remove();
+        });
+    }
+});
+
+
 </script>
 
-
-
+<!-- Your HTML code continues here -->
 
 </script>
 
